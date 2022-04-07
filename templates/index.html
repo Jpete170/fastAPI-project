@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <p>Hello World</p>
+    <div class="container">
+        <div class="text-center">
+            <h1 class="text-decoration-underline">Film Finder</h1>
+            <h3 class="text-decoration-underline">A FastAPI Project</h3>
+        </div>
+        <div class="">
+            <p>'Film Finder' is a Python API built using the <a href='https://fastapi.tiangolo.com/' target="blank">FastAPI</a> framework, and uses sample data from MongoDB</p>
+        </div>
+        <div class="">
+            <h3 class="text-decoration-underline">API Documentation</h3>
+            <p>The documentation for this API can be found at the following links:</p>
+            <div class="row row-cols-2">
+                <div class="col">
+                    <a href="/docs" target="blank">Standard Docs</a>
+                </div>
+                <div class="col">
+                    <a href="/redoc" target="blank">Alternative Docs</a>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="">
+            <h3 class="text-decoration-underline">API Routes</h3>
+            <p>A quick overview of the routes that will be available in the API:</p>
+            <ul>
+                <li>/films - Returns all the films present in the database</li>
+                <li>/films/genres- Returns specifics genres</li>
+            </ul>
+        </div>
+        <br />
+        <div class="">
+            <h3 class="text-decoration-underline">Frontend Connection</h3>
+        </div>
     </div>
 {% endblock %}
