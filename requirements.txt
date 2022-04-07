@@ -1,2 +1,2 @@
 jinja2
-"fastapi[all]"
+fastapi[all]
