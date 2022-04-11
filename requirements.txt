@@ -2,3 +2,4 @@ fastapi[all]
 Jinja2
 pymongo
 uvicorn
+gunicorn
