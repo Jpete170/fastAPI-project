@@ -1,21 +1,33 @@
-import os
-from dotenv import load_dotenv
+import asyncio
+from prisma import Client
+from prisma.models import netflix_titles
+#from prisma import Prisma
+import prisma
 
-
-
-load_dotenv() #usage for environment variables
-
-#conn_str=os.environ[""]
-
-
-def init_client(): #used for testing connection to MongoDB Cluster
+async def init(): #used for testing
+    db = Client()
+    #db = netflix_titles.prisma()._client
+    await db.connect()
     
-    return "Database Migration; No Results Available"
+    """
+    res = await db.netflix_titles.find_first(
+        where={
+            'type': {
+                'contains': 'Movie'
+            }
+        }
+    )
+    """
+   
+    #res_json = res
+    #print(res_json)
 
-def getCollection():
+    #await db.disconnect()
     
     
 
+def get_all():
+    
     return "Temporary Return"
 
 

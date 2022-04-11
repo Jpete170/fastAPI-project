@@ -1,6 +1,6 @@
 fastapi[all]
 Jinja2
-pymongo
 uvicorn
 gunicorn
-motor
+prisma
+asyncio
