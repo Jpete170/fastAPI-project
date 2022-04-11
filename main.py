@@ -30,5 +30,5 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
-    db.init_client()
+    
     return templates.TemplateResponse("index.html", {"request": request})
