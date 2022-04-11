@@ -34,6 +34,6 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
-    #await db.init() #Causes 'TypeError: argument of type 'WindowsPath' is not iterable
+    await db.init() #Causes 'TypeError: argument of type 'WindowsPath' is not iterable
     
     return templates.TemplateResponse("index.html", {"request": request})

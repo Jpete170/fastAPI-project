@@ -5,9 +5,8 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:/db/films.db"
+  url      = "file:./db/films.db"
 }
-
 
 model netflix_titles {
   show_id      String  @id
