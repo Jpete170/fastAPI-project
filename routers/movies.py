@@ -16,7 +16,7 @@ async def get_all_films():
 #basic search function
 @router.get("/films/search")
 async def query_db(column: str, query: str):
-    res = await db.search(column, query)
+    res = await db.search(column, query, 10)
     return res
 
 #return document based on id
@@ -29,7 +29,7 @@ async def get_show_id(show_id : str):
 #Filter based on types (Movie / TV Show)
 @router.get('/films/{type}')
 async def filter_type(type: str):
-    res = await db.search('type', type)
+    res = await db.search('type', type, 10)
     return res
 
 #Filter based on ratings
@@ -41,7 +41,7 @@ async def filter_rating(rating: str):
 #Filter based on Country
 @router.get('/films/country/{country}')
 async def filter_country(country):
-    res = await db.search('country', country) #placeholder function
+    res = await db.search('country', country, 10) #placeholder function
     return res
 
 #Filter based on Release Year

@@ -19,10 +19,10 @@ async def get_all():
 
 #search records with multiple parameters
 #will be used to handle a majority of page routing
-async def search(column, query):
+async def search(column, query, limit: int):
     await db.connect()
     res = await db.netflix_titles.find_many(
-        take=10,
+        take=limit,
         where={
             column :{
                 'contains': query,
@@ -49,6 +49,7 @@ async def get_showId(id):
 async def filter_rating(rating):
     await db.connect()
     res = await db.netflix_titles.find_many(
+        take=10
         where={
             'rating' :{
                 'equals': rating,
