@@ -46,10 +46,11 @@ async def get_showId(id):
     await db.disconnect()
     return res_json
 
+#Filter by ratings
 async def filter_rating(rating):
     await db.connect()
     res = await db.netflix_titles.find_many(
-        take=10
+        take=10,
         where={
             'rating' :{
                 'equals': rating,
