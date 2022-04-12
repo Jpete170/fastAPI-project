@@ -10,15 +10,15 @@ datasource db {
 
 model netflix_titles {
   show_id      String  @id
-  type         String?
-  title        String?
-  director     String?
-  cast         String?
-  country      String?
-  date_added   String?
-  release_year String?
-  rating       String?
-  duration     String?
-  listed_in    String?
-  description  String?
+  type         String
+  title        String
+  director     String
+  cast         String
+  country      String
+  date_added   String
+  release_year String
+  rating       String
+  duration     String
+  listed_in    String
+  description  String
 }
