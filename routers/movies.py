@@ -32,7 +32,7 @@ async def query_db(column: str, query: str, limit: int | None = None):
 @router.get('/films/shows/{show_id}')
 async def get_show_id(show_id : str, response: Response):
    response.headers['Access-Control-Allow-Origin'] = origin
-   print(origin)
+   
    res = await db.get_showId(show_id)        
    if res is not None:
     return res
