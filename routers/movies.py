@@ -1,5 +1,8 @@
+from asyncio.windows_events import NULL
+from contextlib import nullcontext
 from db import db
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, HTTPException
+
 
 
 router = APIRouter(
@@ -15,37 +18,56 @@ async def get_all_films():
 
 #basic search function
 @router.get("/films/search")
-async def query_db(column: str, query: str):
-    res = await db.search(column, query, 10)
-    return res
+async def query_db(column: str, query: str, limit: int | None = None):
+    res = await db.search(column, query, limit)
+    
+    if res is not None:
+        return res
+    else:
+        raise HTTPException(status_code=404, detail="No Results Found.")
 
 #return document based on id
 @router.get('/films/shows/{show_id}')
 async def get_show_id(show_id : str):
-    res = await db.get_showId(show_id)
-    
+   res = await db.get_showId(show_id)        
+   if res is not None:
     return res
+   else:
+        raise HTTPException(status_code=404, detail="Show Not Found.")
 
 #Filter based on types (Movie / TV Show)
 @router.get('/films/{type}')
-async def filter_type(type: str):
-    res = await db.search('type', type, 10)
-    return res
+async def filter_type(type: str, limit: int | None = None):
+    res = await db.search('type', type, limit)
+    if res is not None:
+        return res
+    else:
+        raise HTTPException(status_code=404, detail="Show Type Not Found.")
+    
 
 #Filter based on ratings
 @router.get('/films/ratings/{rating}')
 async def filter_rating(rating: str):
     res = await db.filter_rating(rating)
-    return res
+    if res is not None:
+        return res
+    else:
+        raise HTTPException(status_code=404, detail="Show Ratings Not Found.")
 
 #Filter based on Country
 @router.get('/films/country/{country}')
-async def filter_country(country):
-    res = await db.search('country', country, 10) #placeholder function
-    return res
+async def filter_country(country: str, limit: int | None = None):
+    res = await db.search('country', country, limit) #placeholder function
+    if res is not None:
+        return res
+    else:
+        raise HTTPException(status_code=404, detail="Country Not Found.")
 
 #Filter based on Release Year
 @router.get('/films/year/{year_published}')
-async def filter_year(year_published):
-    res = await db.search('release_year', year_published) #placeholder function
-    return res
+async def filter_year(year_published, limit: int | None = None):
+    res = await db.search('release_year', year_published, limit) #placeholder function
+    if res is not None:
+        return res
+    else:
+        raise HTTPException(status_code=404, detail="Release Year Not Found.")

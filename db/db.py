@@ -1,9 +1,7 @@
-import asyncio
-import json
-from operator import contains
-from prisma import Prisma
+#from prisma import Prisma
 from fastapi.encoders import jsonable_encoder
-from prisma.models import netflix_titles
+from prisma import Prisma
+
 
 db = Prisma()
 
@@ -19,7 +17,7 @@ async def get_all():
 
 #search records with multiple parameters
 #will be used to handle a majority of page routing
-async def search(column, query, limit: int):
+async def search(column, query, limit):
     await db.connect()
     res = await db.netflix_titles.find_many(
         take=limit,
@@ -57,6 +55,7 @@ async def filter_rating(rating):
             }
         }
     )
+    
     res_json = jsonable_encoder(res)
     await db.disconnect()
     return res_json

@@ -1,8 +1,10 @@
 from fastapi import FastAPI, Request, Depends
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import RequestValidationError
+
 from dotenv import load_dotenv
 
 
@@ -30,6 +32,10 @@ app.add_middleware(
 )
 
 app.include_router(movies.router)
+
+app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    return PlainTextResponse(str(exc), status_code=404)
 
 templates = Jinja2Templates(directory="templates")
 
