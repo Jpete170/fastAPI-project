@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 
 from dotenv import load_dotenv
-
+#from dependencies import origins
 
 from routers import movies
 from db import db
@@ -19,8 +19,10 @@ app = FastAPI()
 #app.mount("/static", StaticFiles(directory="static"), name="static")
 
 origins =[
+    'http://localhost',
     'http://localhost:8000',
     'http://localhost:3000/',
+    'http://127.0.0.1:3000/'
 ]
 
 app.add_middleware(
@@ -38,9 +40,10 @@ async def validation_exception_handler(request, exc):
     return PlainTextResponse(str(exc), status_code=404)
 
 templates = Jinja2Templates(directory="templates")
-
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     #await db.init()
     
     return templates.TemplateResponse("index.html", {"request": request})
+
+    

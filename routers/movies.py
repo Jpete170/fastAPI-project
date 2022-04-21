@@ -1,14 +1,16 @@
 from asyncio.windows_events import NULL
-from contextlib import nullcontext
 from db import db
-from fastapi import APIRouter, status, HTTPException
-
-
+from fastapi import APIRouter, status, HTTPException, Response
+import os
+response = Response
 
 router = APIRouter(
     prefix="/api",
-    tags=['films']
+    tags=['films'],
+    
 )
+
+origin = os.environ.get("ORIGIN")
 
 @router.get("/films")
 async def get_all_films():
@@ -28,7 +30,9 @@ async def query_db(column: str, query: str, limit: int | None = None):
 
 #return document based on id
 @router.get('/films/shows/{show_id}')
-async def get_show_id(show_id : str):
+async def get_show_id(show_id : str, response: Response):
+   response.headers['Access-Control-Allow-Origin'] = origin
+   print(origin)
    res = await db.get_showId(show_id)        
    if res is not None:
     return res
