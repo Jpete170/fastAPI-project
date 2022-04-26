@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from routers import movies
 from db import db
 
-load_dotenv() #for potential .env usage
+load_dotenv() #for local .env usage
 
 app = FastAPI()
 

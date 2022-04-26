@@ -1,7 +1,6 @@
 from db import db
 from fastapi import APIRouter, status, HTTPException, Response
 import os
-#response = Response
 
 router = APIRouter(
     prefix="/api",
