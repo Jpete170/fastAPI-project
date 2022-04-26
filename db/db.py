@@ -45,14 +45,29 @@ async def get_showId(id):
     return res_json
 
 #Filter by ratings
-async def filter_rating(rating):
+async def filter_rating(rating, limit):
     await db.connect()
     res = await db.netflix_titles.find_many(
-        take=10,
+        take=limit,
         where={
             'rating' :{
                 'equals': rating,
             }
+        }
+    )
+    
+    res_json = jsonable_encoder(res)
+    await db.disconnect()
+    return res_json
+
+#Filter by ratings
+async def filter_type(type, limit):
+    await db.connect()
+    res = await db.netflix_titles.find_many(
+        take=limit,
+        where={
+            'type': type,
+            
         }
     )
     
