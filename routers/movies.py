@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from db import db
 from fastapi import APIRouter, status, HTTPException, Response
 import os
