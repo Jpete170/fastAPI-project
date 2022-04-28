@@ -7,8 +7,9 @@ router = APIRouter(
     tags=['films'],
     
 )
-
-origin = os.environ.get("ORIGIN")
+#Used to verify origin of frontend request between development and production environments
+#Also used to prevent CORS errors on frontend
+origin = os.environ.get("ORIGIN") 
 
 @router.get("/films")
 async def get_all_films():
