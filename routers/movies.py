@@ -26,7 +26,7 @@ async def query_db(response: Response, column: str, query: str, limit: int | Non
     if res is not None:
         return res
     else:
-        raise HTTPException(status_code=404, detail="No Results Found.")
+        raise HTTPException(status_code=422, detail="No Results Found.")
 
 #return document based on id
 @router.get('/films/shows/{show_id}')
@@ -37,7 +37,7 @@ async def get_show_id(show_id, response: Response):
    if res is not None:
     return res
    else:
-        raise HTTPException(status_code=404, detail="Show Not Found.")
+        raise HTTPException(status_code=422, detail="Show Not Found.")
 
 #Filter based on types (Movie / TV Show)
 @router.get('/films/{type}')
