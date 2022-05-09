@@ -23,7 +23,7 @@ origins =[
     'http://localhost:8000',
     'http://localhost:3000/',
     'http://127.0.0.1:3000/',
-    'https://nuxt-app-olive.vercel.app/'
+    'https://filmfinder.jacksonpeters.dev/'
 ]
 
 app.add_middleware(

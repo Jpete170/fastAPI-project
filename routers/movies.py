@@ -40,6 +40,7 @@ async def get_show_id(show_id, response: Response):
         raise HTTPException(status_code=422, detail="Show Not Found.")
 
 #Filter based on types (Movie / TV Show)
+#Used for initial page load
 @router.get('/films/{type}')
 async def filter_type(response: Response, type: str, limit: int | None = None):
     response.headers['Access-Control-Allow-Origin'] = origin
@@ -48,7 +49,18 @@ async def filter_type(response: Response, type: str, limit: int | None = None):
         return res
     else:
         raise HTTPException(status_code=404, detail="Show Type Not Found.")
-    
+
+#Filter options for above function
+@router.get('/films/{type}/filter')
+async def filter_results(response: Response, type: str, column: str, query: str, limit: int | None = None):
+    response.headers['Access-Control-Allow-Origin'] = origin
+
+    res = await db.filter_page(type, column, query, limit)
+
+    if res is not None:
+        return res
+    else:
+        raise HTTPException(status_code=404, detail="Show Type Not Found.")
 
 #Filter based on ratings
 @router.get('/films/ratings/{rating}')

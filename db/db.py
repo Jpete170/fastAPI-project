@@ -1,4 +1,4 @@
-#from prisma import Prisma
+from operator import contains
 from fastapi.encoders import jsonable_encoder
 from prisma import Prisma
 
@@ -31,6 +31,22 @@ async def search(column, query, limit):
     await db.disconnect()
     return res_json
     
+
+async def filter_page(Type, column, query, limit):
+    await db.connect()
+    res = await db.netflix_titles.find_many(
+        take=limit,
+        where={
+            'type': Type,
+            column:{
+                'contains': query,
+            }
+        }
+    )
+    res_json = jsonable_encoder(res)
+    await db.disconnect()
+    return res_json
+
 #get item show_id
 #Will be used to generate individual web pages for each individual entry
 async def get_showId(id):
