@@ -31,7 +31,7 @@ async def search(column, query, limit):
     await db.disconnect()
     return res_json
     
-
+#The dedicated filtering options for the Movie / TV Show pages in the frontend
 async def filter_page(Type, column, query, limit):
     await db.connect()
     res = await db.netflix_titles.find_many(
@@ -76,7 +76,7 @@ async def filter_rating(rating, limit):
     await db.disconnect()
     return res_json
 
-#Filter by ratings
+#Filter by type
 async def filter_type(type, limit):
     await db.connect()
     res = await db.netflix_titles.find_many(
