@@ -87,7 +87,7 @@ async def filter_country(response: Response, country: str, limit: int | None = N
 #Filter based on Release Year
 @router.get('/films/year/{year_published}')
 async def filter_year(response: Response, year_published, limit: int | None = None):
-    response.headers['Access-Control-Allow-Origin'] = origin
+    #response.headers['Access-Control-Allow-Origin'] = origin
     res = await db.search('release_year', year_published, limit) #placeholder function
     if res is not None:
         return res
