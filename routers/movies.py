@@ -22,7 +22,7 @@ async def get_all_films(response: Response):
 #basic search function
 @router.get("/films/search")
 async def query_db(response: Response, column: str, query: str, limit: int | None = None, ):
-    response.headers['Access-Control-Allow-Origin'] = origin
+    #response.headers['Access-Control-Allow-Origin'] = origin
     res = await db.search(column, query, limit)
     
     if res is not None:
@@ -33,7 +33,7 @@ async def query_db(response: Response, column: str, query: str, limit: int | Non
 #return document based on id
 @router.get('/films/shows/{show_id}')
 async def get_show_id(show_id, response: Response):
-   response.headers['Access-Control-Allow-Origin'] = origin
+   #response.headers['Access-Control-Allow-Origin'] = origin
    
    res = await db.get_showId(show_id)        
    if res is not None:
@@ -45,7 +45,7 @@ async def get_show_id(show_id, response: Response):
 #Used for initial page load
 @router.get('/films/{type}')
 async def filter_type(response: Response, type: str, limit: int | None = None):
-    response.headers['Access-Control-Allow-Origin'] = origin
+    #response.headers['Access-Control-Allow-Origin'] = origin
     res = await db.search('type', type, limit)
     if res is not None:
         return res
@@ -55,7 +55,7 @@ async def filter_type(response: Response, type: str, limit: int | None = None):
 #Filter options for above function
 @router.get('/films/{type}/filter')
 async def filter_results(response: Response, type: str, column: str, query: str, limit: int | None = None):
-    response.headers['Access-Control-Allow-Origin'] = origin
+    #response.headers['Access-Control-Allow-Origin'] = origin
 
     res = await db.filter_page(type, column, query, limit)
 
@@ -67,7 +67,7 @@ async def filter_results(response: Response, type: str, column: str, query: str,
 #Filter based on ratings
 @router.get('/films/ratings/{rating}')
 async def filter_rating(rating: str, response: Response):
-    response.headers['Access-Control-Allow-Origin'] = origin
+    #response.headers['Access-Control-Allow-Origin'] = origin
     res = await db.filter_rating(rating)
     if res is not None:
         return res
@@ -77,7 +77,7 @@ async def filter_rating(rating: str, response: Response):
 #Filter based on Country
 @router.get('/films/country/{country}')
 async def filter_country(response: Response, country: str, limit: int | None = None):
-    response.headers['Access-Control-Allow-Origin'] = origin
+    #response.headers['Access-Control-Allow-Origin'] = origin
     res = await db.search('country', country, limit) #placeholder function
     if res is not None:
         return res
