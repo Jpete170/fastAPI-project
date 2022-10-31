@@ -3,4 +3,4 @@ Jinja2
 uvicorn
 gunicorn
 prisma
-asyncio
+
