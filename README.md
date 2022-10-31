@@ -8,7 +8,7 @@ This Python API project is the backend API for the [Film Finder](https://filmfin
 
 This project uses `FastAPI` and the Prisma Client for Python to query a SQLite database and send data as JSON to the fronted `Nuxt` app.
 
-This API is hosted on Heroku.
+This API is hosted on [Fly.io](http://fly.io), available to acess via this [link](https://fastapi-movies.fly.dev/).
 
 ## Documentation
 
