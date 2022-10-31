@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:fastAPI/db/films.db"
+  url      = "file:./db/films.db"
 }
 
 model netflix_titles {
