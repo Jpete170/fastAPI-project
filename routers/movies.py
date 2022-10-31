@@ -13,7 +13,7 @@ origin = os.environ.get("ORIGIN")
 
 @router.get("/films")
 async def get_all_films(response: Response):
-    response.headers['Access-Control-Allow-Origin'] = origin
+    #response.headers['Access-Control-Allow-Origin'] = origin
 
     res = await db.get_all()
     
