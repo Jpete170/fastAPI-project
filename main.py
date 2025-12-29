@@ -8,8 +8,8 @@ from fastapi.exceptions import RequestValidationError
 from dotenv import load_dotenv
 #from dependencies import origins
 
-from routers import movies
-from db import db
+from .routers.movies import router
+# from database import database
 
 load_dotenv() #for local .env usage
 
@@ -34,7 +34,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.include_router(movies.router)
+app.include_router(router)
 
 app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request, exc):
@@ -43,7 +43,7 @@ async def validation_exception_handler(request, exc):
 templates = Jinja2Templates(directory="templates")
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
-    #await db.init()
+    #await database.init()
     
     return templates.TemplateResponse("index.html", {"request": request})
 

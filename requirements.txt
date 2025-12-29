@@ -4,3 +4,5 @@ uvicorn
 gunicorn
 prisma
 
+
+python-dotenv
