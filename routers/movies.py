@@ -1,4 +1,4 @@
-from database import db
+from ..database import db
 from fastapi import APIRouter, status, HTTPException, Response
 import os
 
