@@ -163,8 +163,6 @@ dependencies = [
     { name = "fastapi", extra = ["all"] },
     { name = "gunicorn" },
     { name = "jinja2" },
-    { name = "pydantic" },
-    { name = "pydantic-core" },
     { name = "python-dotenv" },
     { name = "uvicorn" },
 ]
@@ -174,8 +172,6 @@ requires-dist = [
     { name = "fastapi", extras = ["all"], specifier = ">=0.128.0" },
     { name = "gunicorn", specifier = ">=23.0.0" },
     { name = "jinja2", specifier = ">=3.1.6" },
-    { name = "pydantic", specifier = ">=2.12.5" },
-    { name = "pydantic-core", specifier = ">=2.41.5" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "uvicorn", specifier = ">=0.40.0" },
 ]
