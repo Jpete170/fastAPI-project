@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI, Request, Depends
+from fastapi import FastAPI, Depends
 from fastapi.responses import HTMLResponse, PlainTextResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -43,7 +43,7 @@ async def validation_exception_handler(request, exc):
 
 templates = Jinja2Templates(directory="templates")
 @app.get("/", response_class=HTMLResponse)
-async def root(request: Request):
+async def root(request):
     #await database.init()
     
     return templates.TemplateResponse("index.html", {"request": request})
