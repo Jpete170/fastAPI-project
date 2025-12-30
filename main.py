@@ -8,7 +8,7 @@ from fastapi.exceptions import RequestValidationError
 from dotenv import load_dotenv
 #from dependencies import origins
 
-from .routers.movies import router
+from routers.movies import router
 # from database import database
 
 load_dotenv() #for local .env usage
