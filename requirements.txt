@@ -1,8 +1,0 @@
-fastapi[all]
-Jinja2
-uvicorn
-gunicorn
-prisma
-
-
-python-dotenv
