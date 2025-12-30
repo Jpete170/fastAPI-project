@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, Request, Depends
 from fastapi.responses import HTMLResponse, PlainTextResponse
 from fastapi.templating import Jinja2Templates
@@ -47,4 +48,6 @@ async def root(request: Request):
     
     return templates.TemplateResponse("index.html", {"request": request})
 
-    
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
